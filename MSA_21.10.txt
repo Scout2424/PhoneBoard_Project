@@ -1,0 +1,14 @@
+Pt msa 21.10
+
+Tools: - flutter(dart)
+- SoundPool/MediaPlayer libraries
+- AudioRecord
+
+Practices: - separation of concerns (UI, app logic-what the app does, data layer-how it handles data)
+- architecture: - pattern: mvc (Model View Controller) -> Model for data and logic; View to see UI elements and listent for user interaction; Controller handles input and updates Model/View
+- for flutter use Provider
+
+
++  new features: - record button-> once pressed to record a new button will appear next to it. "Reset Record" which will reset the current recording;
+- the sound buttons, if pressed repeteadly will always start from the beginning + sounds from different sound buttons can overlap when pressed;
+- import: will have an import button which will let us access Phone storage and assign files, which are permited (10s max mp3 and such) to buttons
