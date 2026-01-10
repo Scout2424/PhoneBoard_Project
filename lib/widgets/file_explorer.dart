@@ -27,10 +27,11 @@ class _FileExplorerState extends State<FileExplorer> {
             padding: const EdgeInsets.only(left: 16),
             color: Theme.of(context).colorScheme.surfaceContainerHighest,
             child: const Text(
-              'EXPLORER',
+              'FILE EXPLORER',
               style: TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
                 color: Colors.white,
               ),
             ),
