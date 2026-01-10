@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ide/widgets/editor.dart';
 import 'package:flutter_ide/widgets/file_explorer.dart';
 import 'package:flutter_ide/widgets/side_bar.dart';
 import 'package:flutter_ide/widgets/top_bar.dart';
@@ -18,7 +19,15 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             TopBar(),
-            Expanded(child: Row(children: [SideBar(), FileExplorer()])),
+            Expanded(
+              child: Row(
+                children: [
+                  SideBar(),
+                  FileExplorer(),
+                  Expanded(child: Editor()),
+                ],
+              ),
+            ),
           ],
         ),
       ),
