@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ide/core/theme/themes.dart';
+import 'package:flutter_ide/data/notifiers.dart';
 import 'package:flutter_ide/widgets/home.dart';
 
 void main() {
@@ -16,11 +17,16 @@ class IDEapp extends StatefulWidget {
 class _IDEappState extends State<IDEapp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flip Flops',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeConfig.setTheme(),
-      home: Home(),
+    return ValueListenableBuilder(
+      valueListenable: brightnessNotifier,
+      builder: (context, toggleBrightness, child) {
+        return MaterialApp(
+          title: 'Flip Flops',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeConfig.setTheme(toggleBrightness),
+          home: Home(),
+        );
+      },
     );
   }
 }

@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ide/core/theme/colors.dart';
+import 'package:flutter_ide/data/notifiers.dart';
 
-class TopBar extends StatelessWidget {
-  final VoidCallback toggleBrightness;
-  const TopBar({super.key, required this.toggleBrightness});
+class TopBar extends StatefulWidget {
+  const TopBar({super.key});
 
+  @override
+  State<TopBar> createState() => _TopBarState();
+}
+
+class _TopBarState extends State<TopBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,11 +41,18 @@ class TopBar extends StatelessWidget {
 
           // === BRIGHTNESS BUTTON (right side) ===
           IconButton(
-            icon: const Icon(Icons.color_lens_outlined),
             tooltip: "Toggle Brightness",
-            onPressed: toggleBrightness,
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(),
+            onPressed: () {
+              brightnessNotifier.value = !brightnessNotifier.value;
+            },
+            icon: ValueListenableBuilder(
+              valueListenable: brightnessNotifier,
+              builder: (context, toggleBrightness, child) {
+                return Icon(
+                  toggleBrightness ? Icons.dark_mode : Icons.light_mode,
+                );
+              },
+            ),
           ),
 
           const SizedBox(width: 16),

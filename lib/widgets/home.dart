@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ide/core/theme/themes.dart';
 import 'package:flutter_ide/widgets/top_bar.dart';
 
 class Home extends StatefulWidget {
@@ -13,9 +12,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [TopBar(toggleBrightness: ThemeConfig.toggleBrightness)],
-      ),
+      body: SafeArea(child: Column(children: [TopBar()])),
     );
   }
 }
