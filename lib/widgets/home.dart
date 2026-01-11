@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double maxWidth = screenWidth * 0.40;
+    double maxWidth = screenWidth * 0.50;
     double minWidth = 170.0;
 
     return Scaffold(
