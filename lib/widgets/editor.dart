@@ -30,46 +30,42 @@ class _EditorState extends State<Editor> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // --- LINE NUMBERS COLUMN ---
         Container(
           width: 40,
           padding: const EdgeInsets.only(top: 10),
-          color: Colors.black12, // Subtle background for the gutter
+          color: Theme.of(
+            context,
+          ).colorScheme.surfaceContainer, // Subtle background for the gutter
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: _lineCount,
             itemBuilder: (context, index) => Text(
               '${index + 1}',
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.grey,
-                fontSize: 14,
-                fontFamily: 'monospace',
-              ),
+              style: Theme.of(context).textTheme.labelLarge,
             ),
           ),
         ),
 
         // --- THE ACTUAL TEXT FIELD ---
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: TextField(
-              controller: _controller,
-              maxLines: null, // Makes it grow/scroll
-              keyboardType: TextInputType.multiline,
-              style: const TextStyle(
-                fontFamily: 'monospace',
-                fontSize: 14,
-                color: Colors.white,
+          child: Column(
+            children: [
+              TextField(
+                controller: _controller,
+                maxLines: null, // Makes it grow/scroll
+                keyboardType: TextInputType.multiline,
+                style: Theme.of(context).textTheme.labelLarge,
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  hintText: "Start coding...",
+                ),
               ),
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                hintText: "Start coding...",
-              ),
-            ),
+            ],
           ),
         ),
       ],
