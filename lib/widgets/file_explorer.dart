@@ -25,15 +25,12 @@ class _FileExplorerState extends State<FileExplorer> {
             width: double.infinity,
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.only(left: 16),
-            color: Theme.of(context).colorScheme.surfaceContainerHighest,
-            child: const Text(
+            color: Theme.of(context).colorScheme.surface,
+            child: Text(
               'FILE EXPLORER',
-              style: TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
-                color: Colors.white,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.labelSmall!.copyWith(fontStyle: FontStyle.italic),
             ),
           ),
 
@@ -74,7 +71,7 @@ class _FileExplorerState extends State<FileExplorer> {
             onTap: () => onExpansionChanged(!isExpanded),
             child: Container(
               height: 24,
-              color: Colors.black12,
+              color: Theme.of(context).colorScheme.surfaceContainer,
               child: Row(
                 children: [
                   Icon(
@@ -82,16 +79,9 @@ class _FileExplorerState extends State<FileExplorer> {
                         ? Icons.keyboard_arrow_down
                         : Icons.keyboard_arrow_right,
                     size: 18,
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white70,
-                    ),
-                  ),
+                  Text(title, style: Theme.of(context).textTheme.labelMedium),
                 ],
               ),
             ),
@@ -104,7 +94,7 @@ class _FileExplorerState extends State<FileExplorer> {
                 padding: const EdgeInsets.all(8),
                 child: Text(
                   content,
-                  style: const TextStyle(color: Colors.white60),
+                  style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
             ),

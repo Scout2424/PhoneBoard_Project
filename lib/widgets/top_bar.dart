@@ -42,7 +42,7 @@ class _TopBarState extends State<TopBar> {
           // === BRIGHTNESS BUTTON (right side) ===
           IconButton(
             tooltip: "Toggle Brightness",
-            color: Theme.of(context).colorScheme.onSurface,
+            color: Theme.of(context).colorScheme.surface,
             onPressed: () {
               brightnessNotifier.value = !brightnessNotifier.value;
             },

@@ -17,17 +17,17 @@ class SideBar extends StatelessWidget {
             children: [
               IconButton(
                 icon: const Icon(Icons.folder),
-                color: Theme.of(context).colorScheme.onSurface,
+                color: Theme.of(context).colorScheme.surface,
                 onPressed: () {},
               ),
               IconButton(
                 icon: const Icon(Icons.shopping_cart),
-                color: Theme.of(context).colorScheme.onSurface,
+                color: Theme.of(context).colorScheme.surface,
                 onPressed: () {},
               ),
               IconButton(
                 icon: const Icon(Icons.search),
-                color: Theme.of(context).colorScheme.onSurface,
+                color: Theme.of(context).colorScheme.surface,
                 onPressed: () {},
               ),
             ],
@@ -38,7 +38,7 @@ class SideBar extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 5.0),
             child: IconButton(
               icon: const Icon(Icons.settings),
-              color: Theme.of(context).colorScheme.onSurface,
+              color: Theme.of(context).colorScheme.surface,
               onPressed: () {},
             ),
           ),
