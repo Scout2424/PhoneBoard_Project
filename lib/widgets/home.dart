@@ -12,19 +12,68 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int activePanelIndex = 0;
+  double explorerWidth = 200.0;
+
+  void togglePanel(int index) {
+    setState(() {
+      if (activePanelIndex == index) {
+        activePanelIndex = -1; // Close if already open
+      } else {
+        activePanelIndex = index; // Switch to new panel
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double maxWidth = screenWidth * 0.40;
+    double minWidth = 170.0;
+
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            TopBar(),
+            const TopBar(),
             Expanded(
               child: Row(
                 children: [
-                  SideBar(),
-                  FileExplorer(),
-                  Expanded(child: Editor()),
+                  SideBar(
+                    activeIndex: activePanelIndex,
+                    onIconPressed: togglePanel,
+                  ),
+
+                  if (activePanelIndex == 0) ...[
+                    // 3. The Explorer with dynamic width
+                    SizedBox(width: explorerWidth, child: const FileExplorer()),
+
+                    // 4. THE DRAGGABLE DIVIDER
+                    MouseRegion(
+                      cursor: SystemMouseCursors
+                          .resizeLeftRight, // Shows mouse pointer
+                      child: GestureDetector(
+                        onHorizontalDragUpdate: (details) {
+                          setState(() {
+                            explorerWidth += details.delta.dx;
+                            // 5. Clamping logic
+                            if (explorerWidth < minWidth) {
+                              explorerWidth = minWidth;
+                            }
+                            if (explorerWidth > maxWidth) {
+                              explorerWidth = maxWidth;
+                            }
+                          });
+                        },
+                        child: Container(
+                          width: 4, // Hit area for the drag
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ],
+
+                  const Expanded(child: Editor()),
                 ],
               ),
             ),
