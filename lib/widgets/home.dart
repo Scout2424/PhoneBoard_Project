@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
                         },
                         child: Container(
                           width: 4, // Hit area for the drag
-                          color: Colors.black,
+                          color: Theme.of(context).dividerColor,
                         ),
                       ),
                     ),

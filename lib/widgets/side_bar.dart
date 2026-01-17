@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ide/core/theme/colors.dart';
+import 'package:flutter_ide/pages/settings_page.dart';
 
 class SideBar extends StatelessWidget {
   final int activeIndex;
@@ -34,7 +35,12 @@ class SideBar extends StatelessWidget {
             child: IconButton(
               icon: const Icon(Icons.settings),
               color: Theme.of(context).colorScheme.surface,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SettingsPage()),
+                );
+              },
             ),
           ),
         ],
