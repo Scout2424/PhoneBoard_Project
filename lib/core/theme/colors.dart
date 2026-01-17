@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ide/core/constants/constants.dart';
+import 'package:flutter_ide/data/notifiers.dart';
 
 class ColorConfig {
   static const Color primaryColor = Colors.grey;
@@ -12,7 +12,7 @@ class ColorConfig {
   static const Color deepPurpleColor = Colors.deepPurple;
 
   static Color get seedColor {
-    switch (seedColorChoice) {
+    switch (seedColorChoiceNotifier.value) {
       case 0:
         return primaryColor;
       case 1:

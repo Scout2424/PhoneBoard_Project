@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ide/pages/themes_page.dart';
 
-class SettingsPage extends StatefulWidget {
-  const SettingsPage({super.key});
+class Settings extends StatefulWidget {
+  const Settings({super.key});
 
   @override
-  State<SettingsPage> createState() => _SettingsPageState();
+  State<Settings> createState() => _SettingsState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class _SettingsState extends State<Settings> {
   bool autoSave = false; // Temporary state for the toggle
 
   @override
@@ -22,7 +23,10 @@ class _SettingsPageState extends State<SettingsPage> {
             title: const Text("Theme"),
             subtitle: const Text("Change the app color scheme"),
             onTap: () {
-              // We will add theme selection logic here later
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ThemesPage()),
+              );
             },
           ),
 

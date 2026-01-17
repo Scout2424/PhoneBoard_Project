@@ -20,11 +20,16 @@ class _IDEappState extends State<IDEapp> {
     return ValueListenableBuilder(
       valueListenable: brightnessNotifier,
       builder: (context, toggleBrightness, child) {
-        return MaterialApp(
-          title: 'Flip Flops',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeConfig.setTheme(toggleBrightness),
-          home: Home(),
+        return ValueListenableBuilder(
+          valueListenable: seedColorChoiceNotifier,
+          builder: (context, value, child) {
+            return MaterialApp(
+              title: 'Flip Flops',
+              debugShowCheckedModeBanner: false,
+              theme: ThemeConfig.setTheme(toggleBrightness),
+              home: Home(),
+            );
+          },
         );
       },
     );
