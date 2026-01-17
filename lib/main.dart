@@ -2,8 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ide/core/theme/themes.dart';
 import 'package:flutter_ide/data/notifiers.dart';
 import 'package:flutter_ide/widgets/home.dart';
+import 'package:flutter_ide/core/utils/storage_manager.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final settings = await StorageManager.loadSettings();
+
+  brightnessNotifier.value = settings['isDark'];
+  seedColorChoiceNotifier.value = settings['colorId'];
+
   runApp(const IDEapp());
 }
 

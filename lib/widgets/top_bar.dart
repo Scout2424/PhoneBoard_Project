@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ide/core/theme/colors.dart';
+import 'package:flutter_ide/core/utils/storage_manager.dart';
 import 'package:flutter_ide/data/notifiers.dart';
 
 class TopBar extends StatefulWidget {
@@ -44,7 +45,9 @@ class _TopBarState extends State<TopBar> {
             tooltip: "Toggle Brightness",
             color: Theme.of(context).colorScheme.surface,
             onPressed: () {
-              brightnessNotifier.value = !brightnessNotifier.value;
+              bool newValue = !brightnessNotifier.value;
+              brightnessNotifier.value = newValue;
+              StorageManager.saveBrightness(newValue);
             },
             icon: ValueListenableBuilder(
               valueListenable: brightnessNotifier,

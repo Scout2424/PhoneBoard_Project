@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ide/core/theme/colors.dart';
+import 'package:flutter_ide/core/utils/storage_manager.dart';
 import 'package:flutter_ide/data/notifiers.dart';
 
 class ThemesPage extends StatelessWidget {
@@ -28,6 +29,7 @@ class ThemesPage extends StatelessWidget {
             onTap: () {
               // Update the global notifier
               seedColorChoiceNotifier.value = item['id'];
+              StorageManager.saveColorChoice(item['id']);
               // Go back to the previous screen
               Navigator.pop(context);
             },
